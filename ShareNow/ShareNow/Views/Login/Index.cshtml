@@ -1,0 +1,66 @@
+﻿@model ShareNow.ViewModel.LoginVM
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginPartial.cshtml";
+
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("Index", "Login", FormMethod.Post, new { id = "frmLogin" }))
+{
+    @Html.HiddenFor(model => model.ReturnUrl)
+    //<legend>Enter User's Credentials</legend>
+
+    <div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.TextBoxFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserCategory, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EnumDropDownListFor(model => model.UserCategory)
+                @Html.ValidationMessageFor(model =>model.UserCategory,"", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-2">
+                <button type="button" id="btnLogin" onclick="js:Submit();" name="Command" value="Login" class="btn btn-default">Login</button>
+            </div>
+        </div>
+    </div>
+}
+@*<div><li>@Html.ActionLink("Create Account", "Index", "Signup")</li></div>*@
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+        $("#UserName").focus();
+        $("#frmLogin").keypress(function (e) {
+            var kCode = e.keyCode || e.charCode;
+            if (kCode == 13) {
+                e.preventDefault(); //stops default action: submitting form
+                $(this).blur();
+                $("#btnLogin").focus().click();
+            }
+        });
+    });
+
+    function Submit() {
+        $("#divProcessing").show();
+        $("#frmLogin").submit()
+    }
+</script>
+

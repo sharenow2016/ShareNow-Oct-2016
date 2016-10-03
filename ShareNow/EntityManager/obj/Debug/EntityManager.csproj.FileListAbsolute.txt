@@ -1,0 +1,10 @@
+F:\ShareNow_121016\ShareNow\EntityManager\bin\Debug\EntityManager.dll.config
+F:\ShareNow_121016\ShareNow\EntityManager\bin\Debug\EntityManager.dll
+F:\ShareNow_121016\ShareNow\EntityManager\bin\Debug\EntityManager.pdb
+F:\ShareNow_121016\ShareNow\EntityManager\bin\Debug\EntityFramework.dll
+F:\ShareNow_121016\ShareNow\EntityManager\bin\Debug\EntityFramework.SqlServer.dll
+F:\ShareNow_121016\ShareNow\EntityManager\bin\Debug\EntityFramework.xml
+F:\ShareNow_121016\ShareNow\EntityManager\bin\Debug\EntityFramework.SqlServer.xml
+F:\ShareNow_121016\ShareNow\EntityManager\obj\Debug\EntityManager.dll
+F:\ShareNow_121016\ShareNow\EntityManager\obj\Debug\EntityManager.pdb
+F:\ShareNow_121016\ShareNow\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache

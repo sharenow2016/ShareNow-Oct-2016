@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShareNowDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Users1" Relationship="ShareNowDBModel.FK_Group_User1" FromRole="Group" ToRole="User1" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="ShareNowDBModel.FK_Group_Users" FromRole="Group" ToRole="User1" />
+  </EntityType>
+  <EntityContainer Name="ShareNowDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Groups" EntityType="Self.Group" />
+    <EntitySet Name="Payments" EntityType="ShareNowDBModel.Payment" />
+    <EntitySet Name="Shares" EntityType="ShareNowDBModel.Share" />
+    <EntitySet Name="User1" EntityType="ShareNowDBModel.User1" />
+    <AssociationSet Name="FK_Group_User1" Association="ShareNowDBModel.FK_Group_User1">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="User1" EntitySet="User1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Users" Association="ShareNowDBModel.FK_Payment_Users">
+      <End Role="User1" EntitySet="User1" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Users1" Association="ShareNowDBModel.FK_Payment_Users1">
+      <End Role="User1" EntitySet="User1" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Share_Share" Association="ShareNowDBModel.FK_Share_Share">
+      <End Role="User1" EntitySet="User1" />
+      <End Role="Share" EntitySet="Shares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Share_Users" Association="ShareNowDBModel.FK_Share_Users">
+      <End Role="User1" EntitySet="User1" />
+      <End Role="Share" EntitySet="Shares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group_Users" Association="ShareNowDBModel.FK_Group_Users">
+      <End Role="User1" EntitySet="User1" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="PaidBy" Type="Int32" Nullable="false" />
+    <Property Name="RecievedBy" Type="Int32" Nullable="false" />
+    <Property Name="RecievedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="ShareNowDBModel.FK_Payment_Users" FromRole="Payment" ToRole="User1" />
+    <NavigationProperty Name="User1" Relationship="ShareNowDBModel.FK_Payment_Users1" FromRole="Payment" ToRole="User1" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Share">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="PaidBy" Type="Int32" Nullable="false" />
+    <Property Name="SharedBy" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="ShareNowDBModel.FK_Share_Share" FromRole="Share" ToRole="User1" />
+    <NavigationProperty Name="User1" Relationship="ShareNowDBModel.FK_Share_Users" FromRole="Share" ToRole="User1" />
+    <Property Name="SharedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupId" Type="Int32" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="IsGroup" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="ShareNowDBModel.FK_Group_User1" FromRole="User1" ToRole="Group" />
+    <NavigationProperty Name="Payments" Relationship="ShareNowDBModel.FK_Payment_Users" FromRole="User1" ToRole="Payment" />
+    <NavigationProperty Name="Payments1" Relationship="ShareNowDBModel.FK_Payment_Users1" FromRole="User1" ToRole="Payment" />
+    <NavigationProperty Name="Shares" Relationship="ShareNowDBModel.FK_Share_Share" FromRole="User1" ToRole="Share" />
+    <NavigationProperty Name="Shares1" Relationship="ShareNowDBModel.FK_Share_Users" FromRole="User1" ToRole="Share" />
+    <NavigationProperty Name="Groups" Relationship="ShareNowDBModel.FK_Group_Users" FromRole="User1" ToRole="Group" />
+  </EntityType>
+  <Association Name="FK_Group_User1">
+    <End Type="ShareNowDBModel.Group" Role="Group" Multiplicity="0..1" />
+    <End Type="ShareNowDBModel.User1" Role="User1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Users">
+    <End Type="ShareNowDBModel.User1" Role="User1" Multiplicity="1" />
+    <End Type="ShareNowDBModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="RecievedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Users1">
+    <End Type="ShareNowDBModel.User1" Role="User1" Multiplicity="1" />
+    <End Type="ShareNowDBModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="PaidBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Share_Share">
+    <End Type="ShareNowDBModel.User1" Role="User1" Multiplicity="1" />
+    <End Type="ShareNowDBModel.Share" Role="Share" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Share">
+        <PropertyRef Name="PaidBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Share_Users">
+    <End Type="ShareNowDBModel.User1" Role="User1" Multiplicity="1" />
+    <End Type="ShareNowDBModel.Share" Role="Share" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Share">
+        <PropertyRef Name="SharedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group_Users">
+    <End Type="ShareNowDBModel.User1" Role="User1" Multiplicity="1" />
+    <End Type="ShareNowDBModel.Group" Role="Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
