@@ -1,4 +1,5 @@
 ﻿using EntityManager;
+using ShareNow.DAL;
 using ShareNow.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -13,26 +14,23 @@ namespace ShareImmediate.Controllers
         // GET: Signup
         public ActionResult Index()
         {
-            //SignUpVM viewModel = new SignUpVM();
-            //User model = new User();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index([Bind(Include = "FirstName,LastName,Email,UserName,Password,Mobile,Category")] Users user)
+        public ActionResult Index(SignUpVM model)
         {
-            if (ModelState.IsValid)
+
+                if (ModelState.IsValid)
+                {
+                    ShareNowDAL.AddUser(model);
+                ViewBag.message = "Welcome to ShareNow ...";
+                    return View(model);
+                }
+            
             {
-                user.IsActive = true;
-                user.IsDelete = false;
-                user.IsGroup = false;
-                ShareNowDBEntities db = new ShareNowDBEntities();
-                db.Users.Add(user);
-                db.SaveChanges();
-                return View(user);
-            }
-            {
-                return View(user);
+                ViewBag.message = "Something wrong in signup please contact Admin....";
+                return View(model);
             }
         }
     }

@@ -22,7 +22,7 @@ namespace EntityManager
         public bool IsActive { get; set; }
         public bool IsDelete { get; set; }
     
-        public virtual User1 User { get; set; }
-        public virtual User1 User1 { get; set; }
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

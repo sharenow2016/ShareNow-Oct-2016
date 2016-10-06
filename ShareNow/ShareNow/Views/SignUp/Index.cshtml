@@ -1,4 +1,4 @@
-﻿@model EntityManager.User
+﻿@model ShareNow.ViewModel.SignUpVM
 @{
     ViewBag.Title = "Sign Up";
     Layout = "~/Views/Shared/_LoginPartial.cshtml";
@@ -6,7 +6,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index","SignUp",FormMethod.Post,new { id ="frmSignUp"}))
 {
     <div>
         @Html.LabelFor(model => model.FirstName, new { @class = "col-md-2 control-label" })
@@ -47,14 +47,6 @@
     </div>
 
     <div>
-        @Html.LabelFor(model => model.Category, new { @class = "col-md-2 control-label" })
-    </div>
-    <div>
-        @Html.TextBoxFor(model => model.Category, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
-    </div>
-
-    <div>
         @Html.LabelFor(model => model.Mobile, new { @class = "col-md-2 control-label" })
     </div>
     <div>
@@ -66,6 +58,34 @@
         @Html.EnumDropDownListFor(model => model.Category)
         @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
     </div>*@
-    <input type="submit" value="Sign Up" />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" id="btnAddDetail" onclick="js:Submit();" name="Command" value="AddDetail" class="btn btn-default">Sign Up</button>
+            <button type="button" id="btnReset" onclick="js: ResetFields(frmSignUp);" class="btn btn-default">Reset</button>
+        </div>
+    </div>
 
 }
+
+<script type="text/javascript">
+        function Submit() {
+            $("#divProcessing").show();
+            $("#frmSignUp").submit()
+        }
+        $(document).ready(function () {
+            $("#divProcessing").hide();
+        });
+        function ResetFields(form) {
+            $(':input', form).each(function () {
+                var type = this.type;
+                var tag = this.tagName.toLowerCase(); // normalize case
+                if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'file')
+                    this.value = "";
+                    // checkboxes and radios need to have their checked state cleared
+                else if (type == 'checkbox' || type == 'radio')
+                    this.checked = false;
+                else if (tag == 'select')
+                    this.selectedIndex = 0;
+            });
+        }
+       </script>

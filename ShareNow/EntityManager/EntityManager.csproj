@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F97554E5-F569-442D-BE76-77DA7709ED0F}</ProjectGuid>
+    <ProjectGuid>{A6F10199-CE96-4CC4-9807-582A51CA4807}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EntityManager</RootNamespace>
@@ -76,7 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ShareNowModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="User1.cs">
+    <Compile Include="User.cs">
       <DependentUpon>ShareNowModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

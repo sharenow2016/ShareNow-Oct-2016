@@ -1,4 +1,5 @@
 ﻿using EntityManager;
+using ShareNow.DAL;
 using ShareNow.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -19,14 +20,9 @@ namespace ShareImmediate.Controllers
         [HttpPost]
         public ActionResult Index(LoginVM model, string returnUrl)
         {
-            ShareNowDBEntities db = new ShareNowDBEntities();
-            string UserName = model.UserName;
-            string Password = model.Password;
-            string UserCategory = model.UserCategory.ToString();
 
-            var users = db.Users.Where(user => user.UserName == UserName && user.Password == Password && user.Category == UserCategory).SingleOrDefault();
-
-            // User found in the database
+            var users = ShareNowDAL.UserAuthendication(model.UserName, model.Password);
+           
             if (users != null)
             {
                 Session["FirstName"] = users.FirstName;
@@ -43,7 +39,7 @@ namespace ShareImmediate.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Pay");
                 }
             }
             else

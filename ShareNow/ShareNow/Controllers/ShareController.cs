@@ -13,7 +13,10 @@ namespace ShareNow.Controllers
         // GET: Share
         public ActionResult Index()
         {
-            var goupId = (int)Session["GroupId"];
+            ViewBag.message = null;
+            int goupId = 0;
+            if(Session["GroupId"] != null)
+             goupId = (int)Session["GroupId"];
             var model = new ShareVM(goupId);
             return View(model);
         }
@@ -21,11 +24,14 @@ namespace ShareNow.Controllers
         [HttpPost]
         public ActionResult Index(ShareVM model)
         {
+            int goupId = 0;
             int currentUser = (int)Session["userId"];
 
             ShareNowDAL.SaveShare(model, currentUser);
-            ViewBag.message = "Payment Completed Successfrully.";
-            return View();
+            goupId = (int)Session["GroupId"];
+            model = new ShareVM(goupId);
+            ViewBag.message = "Shared Your Expense Successfrully.";
+            return View(model);
         }
     }
 }

@@ -23,6 +23,6 @@ namespace ShareNow.ViewModel
 
         public string ReturnUrl { get; set; }
 
-        public SNEntities.Enum.UserCategory UserCategory { get; set; }
+        //public SNEntities.Enum.UserCategory UserCategory { get; set; }
     }
 }

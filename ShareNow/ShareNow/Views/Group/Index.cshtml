@@ -1,0 +1,71 @@
+﻿@model ShareNow.ViewModel.GroupVM
+    @{ 
+        ViewBag.Tittle = "Group";
+    }
+<script type="text/javascript" src="~/Scripts/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap-multiselect.css" />
+<div>
+    @using (Html.BeginForm("Index", "Group", FormMethod.Post, new { id = "frmGroup" }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.AvailableUsers, "Select Users", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(x => x.SubmittedUsers, new MultiSelectList(Model.AvailableUsers, "UserId", "UserName", Model.SubmittedUsers), new { @class = "multiselect", multiple = "multiple" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GroupName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.GroupName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GroupName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" id="btnAddDetail" onclick="js:Submit();" name="Command" value="AddDetail" class="btn btn-default">Save</button>
+                <button type="button" id="btnReset" onclick="js: ResetFields(frmGroup);" class="btn btn-default">Reset</button>
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+        function Submit() {
+            $("#divProcessing").show();
+            $("#frmGroup").submit()
+        }
+        $(document).ready(function () {
+            $("#divProcessing").hide();
+        });
+        function ResetFields(form) {
+            $(':input', form).each(function () {
+                var type = this.type;
+                var tag = this.tagName.toLowerCase(); // normalize case
+                if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'file')
+                    this.value = "";
+                    // checkboxes and radios need to have their checked state cleared
+                else if (type == 'checkbox' || type == 'radio')
+                    this.checked = false;
+                else if (tag == 'select')
+                    this.selectedIndex = 0;
+            });
+        }
+
+        $(function () {
+            $("#divProcessing").hide();
+            $("#SubmittedUsers").multiselect(
+            {
+                includeSelectAllOption: true,
+                disableIfEmpty: true,
+                maxHeight: 300,
+                nonSelectedText: 'None Selected',
+                selectAllText: 'Select All!',
+                selectAllValue: 0,
+                enableFiltering: true,
+                enableCaseInsensitiveFiltering: true,
+                checkboxName: 'SubmittedUsers[]'
+            });
+        });
+</script>

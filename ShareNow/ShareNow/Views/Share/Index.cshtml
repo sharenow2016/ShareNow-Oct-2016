@@ -2,6 +2,8 @@
     @{ 
         ViewBag.Title = "Share";
     }
+<script type="text/javascript" src="~/Scripts/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap-multiselect.css" />
 <div>
     @using (Html.BeginForm("Index", "Share", FormMethod.Post, new { id = "frmShare" }))
     {
@@ -20,13 +22,61 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-        </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="button" id="btnAddDetail" onclick="js:Submit();" name="Command" value="AddDetail" class="btn btn-default">Save</button>
+                    <button type="button" id="btnReset" onclick="js: ResetFields(frmShare);" class="btn btn-default">Reset</button>
+                </div>
+                <h4>@ViewBag.message</h4>
+            </div>
+            </div>
+       
+            
+        
     }
 </div>
+
+<script type="text/javascript">
+        function Submit() {
+            $("#divProcessing").show();
+            $("#frmShare").submit()
+        }
+        $(document).ready(function () {
+            $("#divProcessing").hide();
+        });
+        function ResetFields(form) {
+            $(':input', form).each(function () {
+                var type = this.type;
+                var tag = this.tagName.toLowerCase(); // normalize case
+                if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'file')
+                    this.value = "";
+                    // checkboxes and radios need to have their checked state cleared
+                else if (type == 'checkbox' || type == 'radio')
+                    this.checked = false;
+                else if (tag == 'select')
+                    this.selectedIndex = 0;
+            });
+        }
+        $(function () {
+            $("#divProcessing").hide();
+            $("#SubmittedUsers").multiselect(
+            {
+                includeSelectAllOption: true,
+                disableIfEmpty: true,
+                maxHeight: 300,
+                nonSelectedText: 'None Selected',
+                selectAllText: 'Select All!',
+                selectAllValue: 0,
+                enableFiltering: true,
+                enableCaseInsensitiveFiltering: true,
+                checkboxName: 'SubmittedUsers[]'
+            });
+        });
+</script>
+

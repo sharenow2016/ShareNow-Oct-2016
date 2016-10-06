@@ -17,7 +17,7 @@ namespace EntityManager
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Group()
         {
-            this.Users1 = new HashSet<User1>();
+            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
@@ -28,7 +28,7 @@ namespace EntityManager
         public System.DateTime CreatedAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User1> Users1 { get; set; }
-        public virtual User1 User { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

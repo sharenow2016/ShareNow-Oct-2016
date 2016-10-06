@@ -28,6 +28,6 @@ namespace EntityManager
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Share> Shares { get; set; }
-        public virtual DbSet<User1> User1 { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

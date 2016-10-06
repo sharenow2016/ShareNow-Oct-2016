@@ -10,12 +10,52 @@ namespace ShareNow.DAL
 {
     public class ShareNowDAL
     {
-        public static void SavePayment(Payment model, int currentUser)
+
+        public static User UserAuthendication(string userName,string password)
+        {
+            var user = new User();
+            using (var db = new ShareNowDBEntities())
+            {
+                var users = db.Users.Where(u => u.UserName == userName && u.Password == password && u.IsActive == true && u.IsDelete == false).SingleOrDefault();
+                if(users != null)
+                {
+                    user.id = users.id;
+                    user.FirstName = users.FirstName;
+                    user.LastName = users.LastName;
+                    user.Email = users.Email;
+                    user.GroupId = users.GroupId;
+                    user.Category = users.Category;
+                }
+                
+            }
+                return user;
+        }
+
+        public static void AddUser(SignUpVM model)
+        {
+            using (var db = new ShareNowDBEntities())
+            {
+
+                var data = new User();
+                data.FirstName = model.FirstName;
+                data.LastName = model.LastName;
+                data.Email = model.Email;
+                data.UserName = model.UserName;
+                data.Password = model.Password;
+                data.Mobile = model.Mobile;
+                data.IsActive = true;
+                data.IsDelete = false;
+                db.Users.Add(data);
+                db.SaveChanges();
+            }
+        }
+
+        public static void SavePayment(PayVM model, int currentUser)
         {
             var newPayment = new Payment();
             using (ShareNowDBEntities db = new ShareNowDBEntities())
             {
-                newPayment.RecievedBy = model.RecievedBy;
+                newPayment.RecievedBy = model.UserId;
                 newPayment.PaidBy = currentUser;
                 newPayment.RecievedDate = DateTime.Now;
                 newPayment.Amount = model.Amount;
@@ -60,7 +100,7 @@ namespace ShareNow.DAL
                 var groupId = db.Groups.SingleOrDefault(x => x.GroupName == model.GroupName).Id;
 
                 List<int> users = model.SubmittedUsers.OfType<int>().ToList();
-                var groupUsers = db.User1.Where(x => users.Contains(x.id)).ToList();
+                var groupUsers = db.Users.Where(x => users.Contains(x.id)).ToList();
                 groupUsers.ForEach(x =>
                 {
                     x.IsGroup = true;
@@ -76,7 +116,7 @@ namespace ShareNow.DAL
         {
             using (var db = new ShareNowDBEntities())
             {
-                db.User1.Join(
+            var query = db.Users.Join(
                     db.Shares.Where(x=>x.IsActive == true && x.IsDelete ==false),
                     u => u.id, s => s.SharedBy, (u, s) => new { u, s })
                     .Join(
@@ -88,32 +128,22 @@ namespace ShareNow.DAL
                     .Join(
                     db.Payments.Where(x => x.IsActive == true && x.IsDelete == false)
                     , ussp => ussp.uss.us.u.id, pys => pys.PaidBy, (ussp, pys) => new { ussp, pys })
-                    .GroupBy(x=> new {
-                        x.ussp,
-                        x.ussp.uss.ss.SharedAt.Date
-                       
-                    })
-                    //.Select(rpt =>
-                    //    new
-                    //    {
-                    //        //UserName = rpt.Key + " " + rpt.ussp.uss.us.u.LastName,
-                    //        rpt.Sum(c=>c.pys.Amount)
-                            
-
-                    //    }
-                    //)
                     .ToList();
+
+                //var result = query.
+
+
 
             }
         }
 
-        public static List<Users> GetUsers(int groupId)
+        public static List<UsersList> GetUsers(int groupId)
         {
             
-            var result = new List<Users>();
+            var result = new List<UsersList>();
             using (var db = new ShareNowDBEntities())
             {
-                var UserId = db.User1.Where(x=>x.GroupId == groupId && x.IsActive == true && x.IsDelete == false)
+                var UserId = db.Users.Where(x=>x.GroupId == groupId && x.IsActive == true && x.IsDelete == false)
                     .OrderBy(x => x.FirstName)
                     .Select(x => new {
                         UserId = x.id,
@@ -122,7 +152,7 @@ namespace ShareNow.DAL
                     ).ToList();
                 foreach(var user in UserId)
                 {
-                    var data = new Users();
+                    var data = new UsersList();
                     data.UserId = user.UserId;
                     data.UserName = user.UserName;
                     result.Add(data);

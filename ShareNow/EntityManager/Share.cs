@@ -19,11 +19,11 @@ namespace EntityManager
         public int Amount { get; set; }
         public int PaidBy { get; set; }
         public int SharedBy { get; set; }
-        public DateTime SharedAt { get; set; }
+        public System.DateTime SharedAt { get; set; }
         public bool IsActive { get; set; }
         public bool IsDelete { get; set; }
     
-        public virtual User1 User { get; set; }
-        public virtual User1 User1 { get; set; }
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

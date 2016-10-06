@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareNow", "ShareNow\ShareNow.csproj", "{C05C40D7-7248-43C4-992D-1E79D3F39423}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityManager", "EntityManager\EntityManager.csproj", "{F97554E5-F569-442D-BE76-77DA7709ED0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityManager", "EntityManager\EntityManager.csproj", "{A6F10199-CE96-4CC4-9807-582A51CA4807}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{C05C40D7-7248-43C4-992D-1E79D3F39423}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C05C40D7-7248-43C4-992D-1E79D3F39423}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C05C40D7-7248-43C4-992D-1E79D3F39423}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F97554E5-F569-442D-BE76-77DA7709ED0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F97554E5-F569-442D-BE76-77DA7709ED0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F97554E5-F569-442D-BE76-77DA7709ED0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F97554E5-F569-442D-BE76-77DA7709ED0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F10199-CE96-4CC4-9807-582A51CA4807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F10199-CE96-4CC4-9807-582A51CA4807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F10199-CE96-4CC4-9807-582A51CA4807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F10199-CE96-4CC4-9807-582A51CA4807}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
