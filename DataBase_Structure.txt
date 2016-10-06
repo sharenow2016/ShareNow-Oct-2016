@@ -1,0 +1,182 @@
+USE [ShareNowDB]
+GO
+
+/****** Object:  Table [dbo].[Users]    Script Date: 2016-10-03 21:11:41 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Users](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[GroupId] [int] NULL,
+	[FirstName] [varchar](50) NULL,
+	[LastName] [varchar](50) NULL,
+	[FullName] [varchar](100) NULL,
+	[Email] [varchar](50) NULL,
+	[Mobile] [varchar](50) NULL,
+	[UserName] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL,
+	[Category] [varchar](50) NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[IsDelete] [bit] NOT NULL,
+	[IsGroup] [bit] NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Users]  WITH CHECK ADD  CONSTRAINT [FK_Group_User] FOREIGN KEY([GroupId])
+REFERENCES [dbo].[Group] ([Id])
+GO
+
+ALTER TABLE [dbo].[Users] CHECK CONSTRAINT [FK_Group_User]
+GO
+
+
+USE [ShareNowDB]
+GO
+
+/****** Object:  Table [dbo].[Payment]    Script Date: 2016-10-03 21:12:07 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Payment](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Amount] [int] NOT NULL,
+	[PaidBy] [int] NOT NULL,
+	[RecievedBy] [int] NOT NULL,
+	[RecievedDate] [datetime] NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[IsDelete] [bit] NOT NULL,
+ CONSTRAINT [PK_Payment] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Payment]  WITH CHECK ADD  CONSTRAINT [FK_Payment_Users] FOREIGN KEY([RecievedBy])
+REFERENCES [dbo].[Users] ([id])
+GO
+
+ALTER TABLE [dbo].[Payment] CHECK CONSTRAINT [FK_Payment_Users]
+GO
+
+ALTER TABLE [dbo].[Payment]  WITH CHECK ADD  CONSTRAINT [FK_Payment_Users1] FOREIGN KEY([PaidBy])
+REFERENCES [dbo].[Users] ([id])
+GO
+
+ALTER TABLE [dbo].[Payment] CHECK CONSTRAINT [FK_Payment_Users1]
+GO
+
+
+
+USE [ShareNowDB]
+GO
+
+/****** Object:  Table [dbo].[Share]    Script Date: 2016-10-03 21:12:24 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Share](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Category] [varchar](50) NULL,
+	[Amount] [int] NOT NULL,
+	[PaidBy] [int] NOT NULL,
+	[SharedBy] [int] NOT NULL,
+	[SharedAt] [datetime] NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[IsDelete] [bit] NOT NULL,
+ CONSTRAINT [PK_Share] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Share]  WITH CHECK ADD  CONSTRAINT [FK_Share_Share] FOREIGN KEY([PaidBy])
+REFERENCES [dbo].[Users] ([id])
+GO
+
+ALTER TABLE [dbo].[Share] CHECK CONSTRAINT [FK_Share_Share]
+GO
+
+ALTER TABLE [dbo].[Share]  WITH CHECK ADD  CONSTRAINT [FK_Share_Users] FOREIGN KEY([SharedBy])
+REFERENCES [dbo].[Users] ([id])
+GO
+
+ALTER TABLE [dbo].[Share] CHECK CONSTRAINT [FK_Share_Users]
+GO
+
+USE [ShareNowDB]
+GO
+
+/****** Object:  Table [dbo].[Users]    Script Date: 2016-10-03 21:12:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Users](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[GroupId] [int] NULL,
+	[FirstName] [varchar](50) NULL,
+	[LastName] [varchar](50) NULL,
+	[FullName] [varchar](100) NULL,
+	[Email] [varchar](50) NULL,
+	[Mobile] [varchar](50) NULL,
+	[UserName] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL,
+	[Category] [varchar](50) NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[IsDelete] [bit] NOT NULL,
+	[IsGroup] [bit] NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Users]  WITH CHECK ADD  CONSTRAINT [FK_Group_User] FOREIGN KEY([GroupId])
+REFERENCES [dbo].[Group] ([Id])
+GO
+
+ALTER TABLE [dbo].[Users] CHECK CONSTRAINT [FK_Group_User]
+GO
+
+
+
