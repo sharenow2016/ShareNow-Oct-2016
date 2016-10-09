@@ -45,6 +45,10 @@ namespace ShareNow.DAL
                 data.Mobile = model.Mobile;
                 data.IsActive = true;
                 data.IsDelete = false;
+                data.Category = "both";
+                data.IsActive = true;
+                data.IsDelete = false;
+                data.IsGroup = false;
                 db.Users.Add(data);
                 db.SaveChanges();
             }

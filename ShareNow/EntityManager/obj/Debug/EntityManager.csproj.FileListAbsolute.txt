@@ -7,3 +7,13 @@ F:\ShareNow-12OCT16\ShareNow\EntityManager\bin\Debug\EntityFramework.xml
 F:\ShareNow-12OCT16\ShareNow\EntityManager\bin\Debug\EntityFramework.SqlServer.xml
 F:\ShareNow-12OCT16\ShareNow\EntityManager\obj\Debug\EntityManager.dll
 F:\ShareNow-12OCT16\ShareNow\EntityManager\obj\Debug\EntityManager.pdb
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityManager.dll.config
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityManager.dll
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityManager.pdb
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityFramework.dll
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityFramework.SqlServer.dll
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityFramework.xml
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityFramework.SqlServer.xml
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\obj\Debug\EntityManager.dll
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\obj\Debug\EntityManager.pdb
