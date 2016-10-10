@@ -1,11 +1,12 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: transparent;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
+    padding-left: 250px;
     padding-right: 15px;
 }
 
@@ -21,4 +22,51 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+html {
+	background: url('../images/Backgroundcity.jpg');
+	font-size: 10pt;
+	background-repeat: no-repeat;
+	background-size: 1366px 720px;
+}
+#logo {
+	background: url('../images/logo1.png');
+	background-repeat: no-repeat;
+	background-size: 170px 165px;
+    height:170px;
+}
+/*li #activemenu {
+    color:orange !important;	
+}*/
+.nav>li>a {
+    color:#a3d0d9;
+    font-size: 20px;
+}
+.nav>li>a:hover {
+    color:orange;
+    background-color: transparent;
+    border-radius: 20px;
+}
+#activemenu {
+    background-color: transparent;
+    border-radius: 20px;
+}
+    #activemenu a {
+    color:orange;
+    }
+snbutton{
+	background-color: rgba(255, 162, 0, 0.98);
+	color: red;
+	height:30px;
+	width: 115px;
+	border-radius: 20px;
+}
+.label {
+    color:#a3d0d9;
+    font-size: 16px;
+    text-align: right;
+    font-style: normal;
+}
+.allignment {
+        margin-bottom: 10px;
 }
