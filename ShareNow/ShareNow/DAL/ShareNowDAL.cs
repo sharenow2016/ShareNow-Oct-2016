@@ -147,7 +147,7 @@ namespace ShareNow.DAL
             var result = new List<UsersList>();
             using (var db = new ShareNowDBEntities())
             {
-                var UserId = db.Users.Where(x=>x.GroupId == groupId && x.IsActive == true && x.IsDelete == false)
+                var UserId = db.Users.Where(x=>x.GroupId == null && x.IsActive == true && x.IsDelete == false)
                     .OrderBy(x => x.FirstName)
                     .Select(x => new {
                         UserId = x.id,

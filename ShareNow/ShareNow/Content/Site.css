@@ -67,6 +67,15 @@ snbutton{
     text-align: right;
     font-style: normal;
 }
+.sndropdown {
+    width: 175px;
+    height: 28px;
+}
 .allignment {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+}
+.form-control {
+    height: 28px;
+    width: 225px;
+    border-radius: 0px;
 }

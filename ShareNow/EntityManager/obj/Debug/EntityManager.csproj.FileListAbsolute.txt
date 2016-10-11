@@ -14,5 +14,6 @@ E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityF
 E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityFramework.SqlServer.dll
 E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityFramework.xml
 E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\bin\Debug\EntityFramework.SqlServer.xml
+E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\obj\Debug\EntityManager.csprojResolveAssemblyReference.cache
 E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\obj\Debug\EntityManager.dll
 E:\Rekha\project\sn07\ShareNow-Oct-2016\ShareNow\EntityManager\obj\Debug\EntityManager.pdb

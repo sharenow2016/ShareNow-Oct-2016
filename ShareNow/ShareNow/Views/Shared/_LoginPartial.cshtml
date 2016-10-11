@@ -17,12 +17,15 @@
             <div class="col-md-10">
                 <div class="row" style="height:120px;font-size:40px;font-family:nulshock;font-weight: bold;">ShareNow</div>
                 <div class="row">
-                    <div class="col-md-10"></div>
-                    <div class="col-md-2">
-                        <ul>
-                            <li>@Html.ActionLink("SignUp", "Index", "Login")</li>
-                        </ul>
-                    </div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <ul class="nav navbar-nav hovereffect">
+                                <li id="SignUpMenu">@Html.ActionLink("SignUp", "Index", "SignUp")</li>
+                                <li id="LoginMenu">@Html.ActionLink("Login", "Index", "Login")</li>
+                            </ul>
+                        </div>
+                     </div>
                 </div>
             </div>
         </div>

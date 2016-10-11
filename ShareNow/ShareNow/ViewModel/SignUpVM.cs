@@ -28,6 +28,7 @@ namespace ShareNow.ViewModel
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
         [Required]
         [Display(Name = "Conform Password")]
         [DataType(DataType.Password)]

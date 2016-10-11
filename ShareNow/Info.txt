@@ -1,0 +1,14 @@
+User Name : sharenowweb
+Mailid : sharenow2016@gmail.com
+PWD:ShareNow123*
+Customer No: 139383689
+pin: 2016
+
+Machine pwd : ShareNow123
+
+Machine User Name : sharenowweb
+
+
+DB User Name : sharenowweb
+
+DB Password : ShareNow123*

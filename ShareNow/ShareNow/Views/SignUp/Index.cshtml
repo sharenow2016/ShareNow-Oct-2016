@@ -4,67 +4,77 @@
     Layout = "~/Views/Shared/_LoginPartial.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
-
-@using (Html.BeginForm("Index","SignUp",FormMethod.Post,new { id ="frmSignUp"}))
+@using (Html.BeginForm("Index", "SignUp", FormMethod.Post, new { id = "frmSignUp" }))
 {
     <div>
-        @Html.LabelFor(model => model.FirstName, new { @class = "col-md-2 control-label" })
-    </div>
-    <div>
-        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-    </div>
-    <div>
-        @Html.LabelFor(model => model.LastName, new { @class = "col-md-2 control-label" })
+        <div class="form-group col-md-10 ">
+            @Html.LabelFor(model => model.FirstName, new { @class = "col-md-2 control-label label" })
 
-    </div>
-    <div>
-        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label" })
-    </div>
-    <div>
-        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-    </div>
-    <div>
-        @Html.LabelFor(model => model.UserName, new { @class = "col-md-2 control-label" })
-    </div>
-    <div>
-        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Password, new { @class = "col-md-2 control-label" })
-    </div>
-    <div>
-        @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Mobile, new { @class = "col-md-2 control-label" })
-    </div>
-    <div>
-        @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
-    </div>
-    @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
-        @Html.EnumDropDownListFor(model => model.Category)
-        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
-    </div>*@
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="button" id="btnAddDetail" onclick="js:Submit();" name="Command" value="AddDetail" class="btn btn-default">Sign Up</button>
-            <button type="button" id="btnReset" onclick="js: ResetFields(frmSignUp);" class="btn btn-default">Reset</button>
+            <div class="col-md-10 allignment sndropdown">
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
+        <div class="form-group col-md-10 ">
+            @Html.LabelFor(model => model.LastName, new { @class = "col-md-2 control-label label" })
 
+
+            <div class="col-md-10 allignment sndropdown">
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-md-10 ">
+                @Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label label" })
+            <div class="col-md-10 allignment sndropdown">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-md-10 ">
+            @Html.LabelFor(model => model.UserName, new { @class = "col-md-2 control-label label" })
+        
+            <div class="col-md-10 allignment sndropdown">
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-md-10 ">
+            @Html.LabelFor(model => model.Password, new { @class = "col-md-2 control-label label" })
+        
+            <div class="col-md-10 allignment sndropdown">
+                @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+            </div>
+            <div class="form-group col-md-10 ">
+                            @Html.LabelFor(model => model.ConformPassword, new { @class = "col-md-2 control-label label" })
+            
+                            <div class="col-md-10 allignment sndropdown">
+                                @Html.TextBoxFor(model => model.ConformPassword, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ConformPassword, "", new { @class = "text-danger" })
+                            </div>
+                </div>
+                <div class="form-group col-md-10 ">
+                    @Html.LabelFor(model => model.Mobile, new { @class = "col-md-2 control-label label" })
+                
+                    <div class="col-md-10 allignment sndropdown">
+                        @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                    </div>
+                 </div>
+            @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.Category)
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            </div>*@
+            <div class="form-group col-md-10 ">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="button" id="btnAddDetail" onclick="js:Submit();" name="Command" value="AddDetail" class="btn btn-default">Sign Up</button>
+                    <button type="button" id="btnReset" onclick="js: ResetFields(frmSignUp);" class="btn btn-default">Reset</button>
+                </div>
+            </div>
+        </div>
 }
 
 <script type="text/javascript">
